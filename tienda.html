@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Clínica Veterinaria Vitalis</title>
+    <meta name="description" content="Encuentra alimentos, medicamentos y accesorios de la más alta calidad para tu mascota, seleccionados por los especialistas de la Clínica Veterinaria Vitalis.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Reusing custom styles from the main page for consistency */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* Gray-700 */
+        }
+        .vitalis-green { color: #166534; } 
+        .vitalis-green-bg { background-color: #166534; }
+        .vitalis-light-green-bg { background-color: #F0FDF4; }
+        .vitalis-blue { color: #1E40AF; }
+        .vitalis-blue-bg { background-color: #1E40AF; }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #166534;
+            transition: width 0.3s ease-out;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #166534;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        /* Product card styles */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-card .product-image-container {
+            overflow: hidden;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-image {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Cart Sidebar */
+        #cart-sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        #cart-sidebar.translate-x-full {
+            transform: translateX(100%);
+        }
+
+        /* Toast Notification */
+        #toast {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        /* Product Detail Modal Gallery */
+        .thumbnail-image {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .thumbnail-image:hover, .thumbnail-image.active {
+            border-color: #166534; /* vitalis-green */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header (Consistent with main page) -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-vitalis-green"><path d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z"></path><line x1="12" x2="12" y1="2.5" y2="21.5"></line></svg>
+                <span class="text-2xl font-bold text-vitalis-green">Vitalis</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#nosotros" class="nav-link text-gray-600 font-medium">Nosotros</a>
+                <a href="index.html#servicios" class="nav-link text-gray-600 font-medium">Servicios</a>
+                <a href="tienda.html" class="nav-link text-gray-600 font-medium active">Tienda</a>
+                <a href="index.html#instalaciones" class="nav-link text-gray-600 font-medium">Instalaciones</a>
+                <a href="index.html#testimonios" class="nav-link text-gray-600 font-medium">Testimonios</a>
+                <a href="index.html#contacto" class="nav-link text-gray-600 font-medium">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="open-cart-btn" class="relative text-gray-600 hover:text-vitalis-green">
+                    <i data-lucide="shopping-cart"></i>
+                    <span id="cart-item-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html#nosotros" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Nosotros</a>
+            <a href="index.html#servicios" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Servicios</a>
+            <a href="tienda.html" class="block py-2 text-vitalis-green font-bold">Tienda</a>
+            <a href="index.html#instalaciones" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Instalaciones</a>
+            <a href="index.html#testimonios" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Testimonios</a>
+            <a href="index.html#contacto" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Shop Hero Section -->
+        <section class="bg-vitalis-light-green-bg py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-vitalis-green">Tienda Vitalis</h1>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Productos de alta calidad, recomendados por nuestros veterinarios para el cuidado integral de tu mascota.</p>
+                <div class="mt-8 max-w-xl mx-auto">
+                    <div class="relative">
+                        <input type="search" id="search-bar" placeholder="Buscar producto por nombre..." class="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green shadow-sm">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                            <i data-lucide="search" class="text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <!-- Product Grid Container -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+                <!-- Loading trigger -->
+                <div id="load-more-trigger" class="h-10"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent with main page) -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z"></path><line x1="12" x2="12" y1="2.5" y2="21.5"></line></svg>
+                        <span class="text-2xl font-bold">Vitalis</span>
+                    </a>
+                    <p class="text-gray-400">Vitalis Salud Animal S.A.S.</p>
+                    <p class="text-gray-400">NIT: 901.XXX.XXX-X</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                         <li><a href="index.html#nosotros" class="text-gray-400 hover:text-white">Nosotros</a></li>
+                        <li><a href="index.html#servicios" class="text-gray-400 hover:text-white">Servicios</a></li>
+                        <li><a href="tienda.html" class="text-white font-bold">Tienda</a></li>
+                        <li><a href="index.html#instalaciones" class="text-gray-400 hover:text-white">Instalaciones</a></li>
+                        <li><a href="index.html#testimonios" class="text-gray-400 hover:text-white">Testimonios</a></li>
+                        <li><a href="index.html#contacto" class="text-gray-400 hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-lg mb-4">Contacto Rápido</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Urgencias: <a href="tel:+573173709451" class="hover:text-white">(+57) 317 370 9451</a></li>
+                        <li>Citas: <a href="tel:+576044441299" class="hover:text-white">(+57) 604 444 1299</a></li>
+                        <li><a href="mailto:info@vitalis.vet" class="hover:text-white">info@vitalis.vet</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
+                <p>&copy; 2024 Clínica Veterinaria Vitalis. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl z-[70] flex flex-col transform translate-x-full">
+        <div class="flex justify-between items-center p-4 border-b">
+            <h2 class="text-xl font-bold text-gray-800">Carrito de Compras</h2>
+            <button id="close-cart-btn" class="text-gray-600 hover:text-gray-900">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="cart-header" class="p-4 border-b">
+             <button id="clear-cart-btn" class="w-full text-sm text-red-500 hover:text-red-700 font-semibold flex items-center justify-center space-x-2">
+                <i data-lucide="trash"></i>
+                <span>Vaciar Carrito</span>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-4">
+            <!-- Cart items will be dynamically inserted here -->
+            <p class="text-center text-gray-500">Tu carrito está vacío.</p>
+        </div>
+        <div class="p-4 border-t bg-gray-50">
+            <div class="flex justify-between items-center font-bold text-lg">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+            <button class="w-full mt-4 vitalis-green-bg text-white font-bold py-3 px-4 rounded-full cta-button">
+                Finalizar Compra
+            </button>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 text-white py-3 px-5 rounded-lg shadow-lg opacity-0 transform translate-y-10 z-[80]">
+        <p id="toast-message"></p>
+    </div>
+    
+    <!-- Product Detail Modal -->
+    <div id="product-detail-modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden"></div>
+    <div id="product-detail-modal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-4xl bg-white rounded-lg shadow-2xl z-[70] hidden p-4">
+        <div class="relative">
+            <button id="close-product-detail-modal-btn" class="absolute -top-2 -right-2 text-gray-600 hover:text-gray-900 bg-white rounded-full p-1 shadow-md">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div id="product-detail-content" class="grid md:grid-cols-2 gap-8 max-h-[80vh] overflow-y-auto p-4">
+                <!-- Content will be injected by JS -->
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+            if (mobileMenu) {
+                mobileMenu.querySelectorAll('a, button').forEach(link => {
+                    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                });
+            }
+
+            // --- Shopping Cart Logic ---
+            let cart = JSON.parse(localStorage.getItem('vitalisShopCart')) || [];
+            
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+            const openCartBtn = document.getElementById('open-cart-btn');
+            const closeCartBtn = document.getElementById('close-cart-btn');
+            const clearCartBtn = document.getElementById('clear-cart-btn');
+            const cartHeader = document.getElementById('cart-header');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartItemCount = document.getElementById('cart-item-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+
+            const saveCart = () => {
+                localStorage.setItem('vitalisShopCart', JSON.stringify(cart));
+            };
+
+            const formatCurrency = (amount) => {
+                return new Intl.NumberFormat('es-CO', {
+                    style: 'currency', currency: 'COP', minimumFractionDigits: 0
+                }).format(amount);
+            };
+            
+            const showToast = (message, status = 'success') => {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toast-message');
+                
+                toastMessage.textContent = message;
+                
+                toast.classList.remove('bg-gray-800', 'bg-red-700');
+                
+                if (status === 'success') {
+                    toast.classList.add('bg-gray-800');
+                } else if (status === 'warning') {
+                    toast.classList.add('bg-red-700');
+                }
+                
+                toast.classList.remove('opacity-0', 'translate-y-10');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-10');
+                }, 2000);
+            };
+
+            const updateCartUI = () => {
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="text-center text-gray-500">Tu carrito está vacío.</p>';
+                    cartHeader.classList.add('hidden');
+                } else {
+                    cartHeader.classList.remove('hidden');
+                    cartItemsContainer.innerHTML = cart.map(item => `
+                        <div class="flex items-center space-x-3 border-b pb-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md">
+                            <div class="flex-grow">
+                                <p class="font-bold text-sm">${item.name}</p>
+                                <p class="text-gray-600">${formatCurrency(item.price)}</p>
+                                <div class="flex items-center mt-1">
+                                    <button class="cart-quantity-change text-gray-500" data-id="${item.id}" data-change="-1">-</button>
+                                    <span class="px-2 font-bold">${item.quantity}</span>
+                                    <button class="cart-quantity-change text-gray-500" data-id="${item.id}" data-change="1">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-from-cart text-red-500 hover:text-red-700" data-id="${item.id}">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+                
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartItemCount.textContent = totalItems;
+                cartItemCount.classList.toggle('hidden', totalItems === 0);
+
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartSubtotal.textContent = formatCurrency(subtotal);
+
+                lucide.createIcons();
+            };
+
+            const addToCart = (product) => {
+                const existingItem = cart.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                saveCart();
+                updateCartUI();
+                showToast(`${product.name} añadido al carrito`, 'success');
+            };
+            
+            const clearCart = () => {
+                cart = [];
+                saveCart();
+                updateCartUI();
+                showToast('Carrito vaciado', 'warning');
+            }
+
+            clearCartBtn.addEventListener('click', clearCart);
+
+            cartItemsContainer.addEventListener('click', (e) => {
+                const target = e.target.closest('button');
+                if (!target) return;
+                
+                const productId = target.dataset.id;
+                
+                if (target.classList.contains('cart-quantity-change')) {
+                    const change = parseInt(target.dataset.change, 10);
+                    const item = cart.find(i => i.id === productId);
+                    if (item) {
+                        item.quantity += change;
+                        if (item.quantity <= 0) {
+                            cart = cart.filter(i => i.id !== productId);
+                        }
+                    }
+                } else if (target.classList.contains('remove-from-cart')) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+                
+                saveCart();
+                updateCartUI();
+            });
+
+            const toggleCart = () => {
+                cartSidebar.classList.toggle('translate-x-full');
+                cartOverlay.classList.toggle('hidden');
+            };
+
+            openCartBtn.addEventListener('click', toggleCart);
+            closeCartBtn.addEventListener('click', toggleCart);
+            cartOverlay.addEventListener('click', toggleCart);
+            
+            // --- Product Detail Modal ---
+            const productDetailModal = document.getElementById('product-detail-modal');
+            const productDetailModalOverlay = document.getElementById('product-detail-modal-overlay');
+            const closeProductDetailModalBtn = document.getElementById('close-product-detail-modal-btn');
+            const productDetailContent = document.getElementById('product-detail-content');
+
+            const openProductDetailModal = (product) => {
+                const images = [product.imagen1, product.imagen2, product.imagen3, product.imagen4].filter(Boolean);
+                const getImageUrl = (path) => path ? path : `https://placehold.co/400x400/d1fae5/166534?text=${encodeURIComponent(product.nombre.split(' ')[0])}`;
+
+                productDetailContent.innerHTML = `
+                    <!-- Left Side: Image Gallery -->
+                    <div>
+                        <div class="mb-4 bg-gray-100 rounded-lg">
+                            <img id="main-product-image" src="${getImageUrl(images[0])}" alt="${product.nombre}" class="w-full h-auto object-cover rounded-lg">
+                        </div>
+                        <div class="grid grid-cols-4 gap-2" id="thumbnail-container">
+                            ${images.map((img, index) => `
+                                <img src="${getImageUrl(img)}" alt="Thumbnail ${index+1}" class="thumbnail-image rounded-md ${index === 0 ? 'active' : ''}">
+                            `).join('')}
+                        </div>
+                    </div>
+                    <!-- Right Side: Details -->
+                    <div class="flex flex-col">
+                        <h2 class="text-2xl font-bold text-gray-800">${product.nombre}</h2>
+                        <p class="text-sm text-gray-500 mt-1">ID: ${product.IDProducto}</p>
+                        <p class="text-3xl font-bold text-vitalis-green my-4">${formatCurrency(product.Precio)}</p>
+                        <div class="text-gray-600 space-y-3 flex-grow">
+                           <p>${product.descripcion}</p>
+                        </div>
+                        <button class="modal-add-to-cart-btn w-full mt-6 vitalis-blue-bg text-white font-bold py-3 px-4 rounded-full cta-button">
+                            Añadir al Carrito
+                        </button>
+                    </div>
+                `;
+                
+                // Add event listeners for gallery
+                const mainImage = productDetailContent.querySelector('#main-product-image');
+                const thumbnails = productDetailContent.querySelectorAll('.thumbnail-image');
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                        mainImage.src = thumb.src;
+                        thumbnails.forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                });
+                
+                // Add event listener for modal's add to cart button
+                productDetailContent.querySelector('.modal-add-to-cart-btn').addEventListener('click', () => {
+                    addToCart({
+                        id: product.IDProducto,
+                        name: product.nombre,
+                        price: parseFloat(product.Precio),
+                        image: getImageUrl(images[0])
+                    });
+                });
+
+                productDetailModal.classList.remove('hidden');
+                productDetailModalOverlay.classList.remove('hidden');
+            };
+
+            const closeProductDetailModal = () => {
+                productDetailModal.classList.add('hidden');
+                productDetailModalOverlay.classList.add('hidden');
+                productDetailContent.innerHTML = ''; // Clear content
+            };
+
+            closeProductDetailModalBtn.addEventListener('click', closeProductDetailModal);
+            productDetailModalOverlay.addEventListener('click', closeProductDetailModal);
+            
+            // --- Product Loading and Filtering with Infinite Scroll ---
+            const productGrid = document.getElementById('product-grid');
+            let allProducts = [];
+            let productsToRender = [];
+            let currentIndex = 0;
+            const productsPerLoad = 12; 
+            let isLoading = false;
+
+            const createProductCard = (product) => {
+                const formattedPrice = formatCurrency(product.Precio);
+                const imageUrl = product.imagen1 ? product.imagen1 : `https://placehold.co/400x400/d1fae5/166534?text=${encodeURIComponent(product.nombre.split(' ')[0])}`;
+
+                const card = document.createElement('div');
+                card.className = "product-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col group";
+                card.innerHTML = `
+                    <div class="relative h-56 bg-gray-200 product-image-container">
+                        <img src="${imageUrl}" alt="Producto ${product.nombre}" class="product-image w-full h-full object-cover">
+                        <div class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm text-gray-600 text-xs font-semibold px-2 py-1 rounded-full">
+                            ID: ${product.IDProducto}
+                        </div>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-800 group-hover:text-vitalis-green transition-colors duration-300">${product.nombre}</h3>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-200 space-y-2">
+                             <p class="text-2xl font-bold text-vitalis-green">${formattedPrice}</p>
+                             <div class="flex space-x-2">
+                                <button class="view-description-btn w-full bg-white border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full hover:bg-gray-100 transition-colors">Descripción</button>
+                                <button class="add-to-cart-btn w-full vitalis-blue-bg text-white font-bold py-2 px-4 rounded-full cta-button">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                card.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+                    addToCart({
+                        id: product.IDProducto,
+                        name: product.nombre,
+                        price: parseFloat(product.Precio),
+                        image: imageUrl
+                    });
+                });
+
+                card.querySelector('.view-description-btn').addEventListener('click', () => {
+                     openProductDetailModal(product);
+                });
+                
+                return card;
+            };
+
+            const renderNextBatch = () => {
+                if (isLoading) return;
+                isLoading = true;
+
+                const batch = productsToRender.slice(currentIndex, currentIndex + productsPerLoad);
+                batch.forEach(product => {
+                    productGrid.appendChild(createProductCard(product));
+                });
+                
+                currentIndex += productsPerLoad;
+                isLoading = false;
+
+                if (currentIndex >= productsToRender.length) {
+                    observer.unobserve(document.getElementById('load-more-trigger'));
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !isLoading) {
+                    renderNextBatch();
+                }
+            }, { rootMargin: '200px' });
+
+            const resetAndRender = (products) => {
+                productGrid.innerHTML = '';
+                currentIndex = 0;
+                productsToRender = products;
+                observer.disconnect();
+                if (productsToRender.length > 0) {
+                    renderNextBatch();
+                    if (productsToRender.length > productsPerLoad) {
+                         observer.observe(document.getElementById('load-more-trigger'));
+                    }
+                } else {
+                     productGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">No se encontraron productos que coincidan con tu búsqueda.</p>';
+                }
+            };
+
+            const loadProducts = async () => {
+                try {
+                    productGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">Cargando productos...</p>';
+                    const response = await fetch('products.csv');
+                    const csvText = await response.text();
+                    
+                    const rows = csvText.trim().split('\n');
+                    const headers = rows.shift().split(',');
+
+                    allProducts = rows.map(row => {
+                        if (row.trim() === '') return null;
+                        const values = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g).map(val => val.replace(/"/g, ''));
+                        return headers.reduce((obj, header, i) => {
+                            obj[header.trim()] = values[i] ? values[i].trim() : '';
+                            return obj;
+                        }, {});
+                    }).filter(Boolean);
+
+                    resetAndRender(allProducts);
+
+                } catch (error) {
+                    console.error('Error loading products:', error);
+                    productGrid.innerHTML = '<p class="col-span-full text-center text-red-500">No se pudieron cargar los productos. Por favor, inténtalo de nuevo más tarde.</p>';
+                }
+            };
+
+            const searchBar = document.getElementById('search-bar');
+            searchBar.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredProducts = allProducts.filter(product => 
+                    product.nombre.toLowerCase().includes(searchTerm)
+                );
+                resetAndRender(filteredProducts);
+            });
+
+            loadProducts();
+            updateCartUI(); // Initial UI update on page load
+        });
+    </script>
+</body>
+</html>
+
