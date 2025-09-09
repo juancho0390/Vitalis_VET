@@ -602,6 +602,31 @@
             updateCartUI(); // Initial UI update on page load
         });
     </script>
+
+
+<!--ENSAYO PARA PASARELA DE PAGO PAYPAL-->
+    <script>
+        async function getPayPalToken() {
+            const clientId = "AYthQ_WZUfi3_wZ6K9OdhCUf4uKA7ateL3PHMOS-MMJzYBHqqB63YuNeN93RllfaFjwjKtxWTcodviwu";
+            const clientSecret = "EPtbtLHY0BTK41zo0I41EbAroJPUvzQ7lp9CJaPZpR7syy57NGnOLxPUB4T20ROG7gY3P3oWDaAsh8qS";
+
+            // Codifica en base64 para el header Authorization
+            const credentials = btoa(clientId + ":" + clientSecret);
+
+            const response = await fetch("https://api-m.sandbox.paypal.com/v1/oauth2/token", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Basic " + credentials,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "grant_type=client_credentials"
+            });
+
+            const data = await response.json();
+            console.log("Token:", data);
+        }
+        getPayPalToken();
+    </script>
 </body>
 </html>
 

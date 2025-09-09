@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clínica Veterinaria Vitalis - Cuidado Integral para tu Mascota</title>
-    <meta name="description" content="Ofrecemos medicina veterinaria de excelencia, compasiva e integral para caninos y felinos. Urgencias 24/7, especialistas y tecnología de vanguardia en El Poblado, Medellín.">
-    <meta name="keywords" content="veterinaria, clínica veterinaria, urgencias veterinarias 24/7, veterinario Medellín, Vitalis, salud animal, caninos, felinos">
-    
+    <meta name="description"
+        content="Ofrecemos medicina veterinaria de excelencia, compasiva e integral para caninos y felinos. Urgencias 24/7, especialistas y tecnología de vanguardia en El Poblado, Medellín.">
+    <meta name="keywords"
+        content="veterinaria, clínica veterinaria, urgencias veterinarias 24/7, veterinario Medellín, Vitalis, salud animal, caninos, felinos">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -22,17 +25,42 @@
         /* Custom Styles */
         body {
             font-family: 'Inter', sans-serif;
-            color: #374151; /* Gray-700 */
+            color: #374151;
+            /* Gray-700 */
         }
 
         /* Custom color palette based on document */
-        .vitalis-green { color: #166534; } /* Green-800 */
-        .vitalis-green-bg { background-color: #166534; }
-        .vitalis-light-green-bg { background-color: #F0FDF4; } /* Green-50 */
-        .vitalis-blue { color: #1E40AF; } /* Blue-800 */
-        .vitalis-blue-bg { background-color: #1E40AF; }
-        .vitalis-accent { color: #BE123C; } /* Rose-700 for urgent CTAs */
-        .vitalis-accent-bg { background-color: #BE123C; }
+        .vitalis-green {
+            color: #166534;
+        }
+
+        /* Green-800 */
+        .vitalis-green-bg {
+            background-color: #166534;
+        }
+
+        .vitalis-light-green-bg {
+            background-color: #F0FDF4;
+        }
+
+        /* Green-50 */
+        .vitalis-blue {
+            color: #1E40AF;
+        }
+
+        /* Blue-800 */
+        .vitalis-blue-bg {
+            background-color: #1E40AF;
+        }
+
+        .vitalis-accent {
+            color: #BE123C;
+        }
+
+        /* Rose-700 for urgent CTAs */
+        .vitalis-accent-bg {
+            background-color: #BE123C;
+        }
 
         .cta-button {
             transition: all 0.3s ease;
@@ -42,7 +70,7 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         /* Scroll-triggered Animations */
         .fade-in-section {
             opacity: 0;
@@ -63,48 +91,71 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: kenburns-fade 24s infinite; /* 6s per image * 4 images */
+            animation: kenburns-fade 24s infinite;
+            /* 6s per image * 4 images */
             transform: scale(1.1);
         }
 
-        .hero-slide:nth-child(1) { animation-delay: 0s; }
-        .hero-slide:nth-child(2) { animation-delay: 6s; }
-        .hero-slide:nth-child(3) { animation-delay: 12s; }
-        .hero-slide:nth-child(4) { animation-delay: 18s; }
+        .hero-slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .hero-slide:nth-child(2) {
+            animation-delay: 6s;
+        }
+
+        .hero-slide:nth-child(3) {
+            animation-delay: 12s;
+        }
+
+        .hero-slide:nth-child(4) {
+            animation-delay: 18s;
+        }
 
         @keyframes kenburns-fade {
             0% {
                 opacity: 0;
                 transform: scale(1.1);
             }
-            4% { /* Fade in */
+
+            4% {
+                /* Fade in */
                 opacity: 1;
             }
-            25% { /* Stay visible and pan */
+
+            25% {
+                /* Stay visible and pan */
                 opacity: 1;
                 transform: scale(1);
             }
-            29% { /* Fade out */
+
+            29% {
+                /* Fade out */
                 opacity: 0;
                 transform: scale(1);
             }
+
             100% {
                 opacity: 0;
             }
         }
-        
+
         /* Style for clickable cards */
-        .service-card, .facility-card {
+        .service-card,
+        .facility-card {
             cursor: pointer;
         }
 
         /* Styles for modal content */
-        #service-modal-description ul, #facility-modal-description ul {
+        #service-modal-description ul,
+        #facility-modal-description ul {
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-top: 1rem;
         }
-        #service-modal-description li, #facility-modal-description li {
+
+        #service-modal-description li,
+        #facility-modal-description li {
             margin-bottom: 0.5rem;
         }
 
@@ -114,8 +165,9 @@
             width: 100%;
             position: relative;
         }
-        
-        .marquee-container:before, .marquee-container:after {
+
+        .marquee-container:before,
+        .marquee-container:after {
             content: '';
             position: absolute;
             top: 0;
@@ -126,12 +178,12 @@
 
         .marquee-container:before {
             left: 0;
-            background: linear-gradient(to right, #ffffff, rgba(255,255,255,0));
+            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
         }
 
         .marquee-container:after {
             right: 0;
-            background: linear-gradient(to left, #ffffff, rgba(255,255,255,0));
+            background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
         }
 
         .marquee {
@@ -145,10 +197,17 @@
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); } /* Translate by half since content is duplicated */
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* Translate by half since content is duplicated */
         }
-        
+
         /* Facility Modal Slideshow Styles */
         #facility-modal-slideshow .facility-slide {
             position: absolute;
@@ -180,39 +239,66 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #166534; /* vitalis-green */
+            background-color: #166534;
+            /* vitalis-green */
             transition: width 0.3s ease-out;
         }
 
         .nav-link:hover {
-            color: #166534; /* vitalis-green */
+            color: #166534;
+            /* vitalis-green */
         }
 
         .nav-link:hover::after {
             width: 100%;
         }
-        
+
         /* Shop Section Animation */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
+
         .product-bubble {
             animation: float 6s ease-in-out infinite;
         }
-        .product-bubble:nth-child(2) { animation-delay: -3s; }
-        .product-bubble:nth-child(3) { animation-delay: -1.5s; }
-        .product-bubble:nth-child(4) { animation-delay: -4.5s; }
 
+        .product-bubble:nth-child(2) {
+            animation-delay: -3s;
+        }
+
+        .product-bubble:nth-child(3) {
+            animation-delay: -1.5s;
+        }
+
+        .product-bubble:nth-child(4) {
+            animation-delay: -4.5s;
+        }
     </style>
 </head>
+
 <body class="bg-white">
 
     <!-- Header -->
-    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+    <header id="header"
+        class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#inicio" class="flex items-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-vitalis-green"><path d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z"></path><line x1="12" x2="12" y1="2.5" y2="21.5"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-vitalis-green">
+                    <path
+                        d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z">
+                    </path>
+                    <line x1="12" x2="12" y1="2.5" y2="21.5"></line>
+                </svg>
                 <span class="text-2xl font-bold text-vitalis-green">Vitalis</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8">
@@ -224,7 +310,8 @@
                 <a href="#contacto" class="nav-link text-gray-600 font-medium">Contacto</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <button id="open-modal-btn" class="hidden sm:block vitalis-blue-bg text-white font-bold py-2 px-6 rounded-full cta-button">
+                <button id="open-modal-btn"
+                    class="hidden sm:block vitalis-blue-bg text-white font-bold py-2 px-6 rounded-full cta-button">
                     Agendar Cita
                 </button>
                 <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
@@ -237,11 +324,13 @@
             <a href="#nosotros" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Nosotros</a>
             <a href="#servicios" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Servicios</a>
             <a href="#tienda" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Tienda</a>
-            <a href="#instalaciones" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Instalaciones</a>
+            <a href="#instalaciones"
+                class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Instalaciones</a>
             <a href="#testimonios" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Testimonios</a>
             <a href="#contacto" class="block py-2 text-gray-600 hover:text-vitalis-green font-medium">Contacto</a>
-             <button id="open-modal-btn-mobile" class="w-full mt-4 vitalis-blue-bg text-white font-bold py-2 px-6 rounded-full cta-button">
-                    Agendar Cita
+            <button id="open-modal-btn-mobile"
+                class="w-full mt-4 vitalis-blue-bg text-white font-bold py-2 px-6 rounded-full cta-button">
+                Agendar Cita
             </button>
         </div>
     </header>
@@ -254,19 +343,25 @@
                 <!-- INSTRUCCIÓN: Reemplaza las URLs de placehold.co con las rutas a tus imágenes locales -->
                 <div class="hero-slide" style="background-image: url('./images/HeroImage1.png');"></div>
                 <div class="hero-slide" style="background-image: url('./images/MascotaFeliz1.png');"></div>
-                <div class="hero-slide" style="background-image: url('./images/Heroimage2.png?text=Equipo+Veterinario+3');"></div>
-                <div class="hero-slide" style="background-image: url('https://placehold.co/1920x1080/dbeafe/1e40af?text=Instalaciones+Modernas+4');"></div>
+                <div class="hero-slide"
+                    style="background-image: url('./images/Heroimage2.png?text=Equipo+Veterinario+3');"></div>
+                <div class="hero-slide"
+                    style="background-image: url('https://placehold.co/1920x1080/dbeafe/1e40af?text=Instalaciones+Modernas+4');">
+                </div>
             </div>
-            
+
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
             <div class="relative z-10 text-center px-4 fade-in-section is-visible">
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Cuidamos de tu familia.</h1>
-                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto">Medicina veterinaria de excelencia, compasiva e integral para caninos y felinos.</p>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto">Medicina veterinaria de excelencia, compasiva e
+                    integral para caninos y felinos.</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button id="open-modal-btn-hero" class="w-full sm:w-auto vitalis-blue-bg text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
+                    <button id="open-modal-btn-hero"
+                        class="w-full sm:w-auto vitalis-blue-bg text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
                         Agenda tu Cita Ahora
                     </button>
-                    <a href="#servicios" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
+                    <a href="#servicios"
+                        class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
                         Ver Servicios
                     </a>
                 </div>
@@ -278,29 +373,36 @@
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">¿Por qué confiar en Vitalis?</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestra propuesta de valor se sustenta en tres pilares estratégicos.</p>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestra propuesta de valor se sustenta en
+                        tres pilares estratégicos.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-10">
-                    <div class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div
+                        class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                         <div class="inline-block p-4 vitalis-green-bg text-white rounded-full mb-4">
                             <i data-lucide="users" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Equipo Humano Especializado</h3>
-                        <p class="text-gray-600">Especialistas altamente cualificados para un abordaje multidisciplinario, garantizando la mejor atención para cada caso.</p>
+                        <p class="text-gray-600">Especialistas altamente cualificados para un abordaje
+                            multidisciplinario, garantizando la mejor atención para cada caso.</p>
                     </div>
-                    <div class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div
+                        class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                         <div class="inline-block p-4 vitalis-green-bg text-white rounded-full mb-4">
                             <i data-lucide="scan-eye" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Tecnología de Vanguardia</h3>
-                        <p class="text-gray-600">Inversión constante en tecnología para diagnósticos y tratamientos precisos, seguros y mínimamente invasivos.</p>
+                        <p class="text-gray-600">Inversión constante en tecnología para diagnósticos y tratamientos
+                            precisos, seguros y mínimamente invasivos.</p>
                     </div>
-                    <div class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div
+                        class="text-center p-8 bg-vitalis-light-green-bg rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                         <div class="inline-block p-4 vitalis-green-bg text-white rounded-full mb-4">
                             <i data-lucide="heart-handshake" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Experiencia Insuperable</h3>
-                        <p class="text-gray-600">Comunicación transparente y un entorno diseñado para el bienestar de tu mascota y tu tranquilidad.</p>
+                        <p class="text-gray-600">Comunicación transparente y un entorno diseñado para el bienestar de tu
+                            mascota y tu tranquilidad.</p>
                     </div>
                 </div>
             </div>
@@ -310,51 +412,65 @@
         <section id="servicios" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Una Solución Completa para Cada Etapa de su Vida</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Desde la prevención hasta los tratamientos más complejos, lo tenemos todo cubierto.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Una Solución Completa para Cada Etapa de su
+                        Vida</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Desde la prevención hasta los tratamientos
+                        más complejos, lo tenemos todo cubierto.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card" data-service="preventiva">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card"
+                        data-service="preventiva">
                         <div class="flex items-center space-x-4 mb-3">
                             <i data-lucide="shield-check" class="w-10 h-10 text-vitalis-green"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Medicina Preventiva</h3>
                         </div>
-                        <p class="text-gray-600">Planes de vacunación, control parasitario, odontología y asesoría nutricional para una vida larga y sana.</p>
+                        <p class="text-gray-600">Planes de vacunación, control parasitario, odontología y asesoría
+                            nutricional para una vida larga y sana.</p>
                     </div>
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card" data-service="diagnostico">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card"
+                        data-service="diagnostico">
                         <div class="flex items-center space-x-4 mb-3">
-                           <i data-lucide="flask-conical" class="w-10 h-10 text-vitalis-green"></i>
+                            <i data-lucide="flask-conical" class="w-10 h-10 text-vitalis-green"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Diagnóstico Avanzado</h3>
                         </div>
-                        <p class="text-gray-600">Laboratorio interno, imagenología digital, endoscopia y ecografía para diagnósticos rápidos y certeros.</p>
+                        <p class="text-gray-600">Laboratorio interno, imagenología digital, endoscopia y ecografía para
+                            diagnósticos rápidos y certeros.</p>
                     </div>
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card" data-service="especialidades">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card"
+                        data-service="especialidades">
                         <div class="flex items-center space-x-4 mb-3">
                             <i data-lucide="stethoscope" class="w-10 h-10 text-vitalis-green"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Especialidades Médicas</h3>
                         </div>
-                        <p class="text-gray-600">Cardiología, dermatología, neurología, oncología y más para abordar los casos más complejos.</p>
+                        <p class="text-gray-600">Cardiología, dermatología, neurología, oncología y más para abordar los
+                            casos más complejos.</p>
                     </div>
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card" data-service="quirurgicos">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card"
+                        data-service="quirurgicos">
                         <div class="flex items-center space-x-4 mb-3">
-                           <i data-lucide="syringe" class="w-10 h-10 text-vitalis-green"></i>
+                            <i data-lucide="syringe" class="w-10 h-10 text-vitalis-green"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Servicios Quirúrgicos</h3>
                         </div>
-                        <p class="text-gray-600">Quirófanos de vanguardia para cirugías de tejidos blandos, ortopedia compleja y neurocirugía.</p>
+                        <p class="text-gray-600">Quirófanos de vanguardia para cirugías de tejidos blandos, ortopedia
+                            compleja y neurocirugía.</p>
                     </div>
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-accent service-card" data-service="urgencias">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-accent service-card"
+                        data-service="urgencias">
                         <div class="flex items-center space-x-4 mb-3">
-                           <i data-lucide="siren" class="w-10 h-10 text-vitalis-accent"></i>
+                            <i data-lucide="siren" class="w-10 h-10 text-vitalis-accent"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Urgencias y Hospitalización 24/7</h3>
                         </div>
-                        <p class="text-gray-600">Atención ininterrumpida y cuidados intensivos para los momentos críticos. Siempre disponibles para ti.</p>
+                        <p class="text-gray-600">Atención ininterrumpida y cuidados intensivos para los momentos
+                            críticos. Siempre disponibles para ti.</p>
                     </div>
-                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card" data-service="complementarios">
+                    <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-vitalis-green service-card"
+                        data-service="complementarios">
                         <div class="flex items-center space-x-4 mb-3">
-                           <i data-lucide="paw-print" class="w-10 h-10 text-vitalis-green"></i>
+                            <i data-lucide="paw-print" class="w-10 h-10 text-vitalis-green"></i>
                             <h3 class="text-lg font-semibold text-gray-800">Servicios Complementarios</h3>
                         </div>
-                        <p class="text-gray-600">Farmacia, fisioterapia, rehabilitación, peluquería y spa en un entorno seguro y profesional.</p>
+                        <p class="text-gray-600">Farmacia, fisioterapia, rehabilitación, peluquería y spa en un entorno
+                            seguro y profesional.</p>
                     </div>
                 </div>
             </div>
@@ -363,37 +479,46 @@
         <!-- NEW Section: Tienda -->
         <section id="tienda" class="py-20 bg-white overflow-hidden">
             <div class="container mx-auto px-6 fade-in-section">
-                <div class="bg-vitalis-light-green-bg rounded-2xl shadow-lg p-8 md:p-12 grid lg:grid-cols-3 gap-8 items-center">
+                <div
+                    class="bg-vitalis-light-green-bg rounded-2xl shadow-lg p-8 md:p-12 grid lg:grid-cols-3 gap-8 items-center">
                     <!-- Left: Description -->
                     <div class="lg:col-span-1 text-center lg:text-left">
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tienda Vitalis</h2>
-                        <p class="text-gray-600 mb-6">Todo lo que necesitas para el bienestar de tu mascota en un solo lugar. Encuentra alimentos medicados, suplementos, productos de higiene y accesorios de la más alta calidad, recomendados por nuestros especialistas.</p>
+                        <p class="text-gray-600 mb-6">Todo lo que necesitas para el bienestar de tu mascota en un solo
+                            lugar. Encuentra alimentos medicados, suplementos, productos de higiene y accesorios de la
+                            más alta calidad, recomendados por nuestros especialistas.</p>
                     </div>
-                    
+
                     <!-- Middle: Animation -->
                     <div class="lg:col-span-1 h-64 lg:h-auto relative flex items-center justify-center">
                         <div class="absolute w-40 h-40 bg-green-200 rounded-full opacity-30"></div>
                         <div class="absolute w-56 h-56 bg-blue-100 rounded-full opacity-30 -bottom-8 -right-8"></div>
-                        
-                        <div class="product-bubble absolute top-0 left-1/4 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center">
-                             <i data-lucide="bone" class="w-10 h-10 text-green-700"></i>
+
+                        <div
+                            class="product-bubble absolute top-0 left-1/4 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center">
+                            <i data-lucide="bone" class="w-10 h-10 text-green-700"></i>
                         </div>
-                        <div class="product-bubble absolute bottom-0 right-1/4 w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center">
+                        <div
+                            class="product-bubble absolute bottom-0 right-1/4 w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center">
                             <i data-lucide="first-aid-kit" class="w-12 h-12 text-blue-700"></i>
                         </div>
-                         <div class="product-bubble absolute top-1/4 right-8 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                        <div
+                            class="product-bubble absolute top-1/4 right-8 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
                             <i data-lucide="cat" class="w-8 h-8 text-gray-600"></i>
                         </div>
-                        <div class="product-bubble absolute bottom-1/4 left-8 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                             <i data-lucide="dog" class="w-8 h-8 text-yellow-700"></i>
+                        <div
+                            class="product-bubble absolute bottom-1/4 left-8 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
+                            <i data-lucide="dog" class="w-8 h-8 text-yellow-700"></i>
                         </div>
                     </div>
 
                     <!-- Right: CTA -->
                     <div class="lg:col-span-1 text-center lg:text-right">
-                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Visita nuestra tienda online</h3>
-                         <p class="text-gray-600 mb-6">Compra desde la comodidad de tu casa y recibe los mejores productos para tu compañero de vida.</p>
-                         <a href="tienda.html" target="_blank" class="inline-block vitalis-green-bg text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Visita nuestra tienda online</h3>
+                        <p class="text-gray-600 mb-6">Compra desde la comodidad de tu casa y recibe los mejores
+                            productos para tu compañero de vida.</p>
+                        <a href="tienda.html" target="_blank"
+                            class="inline-block vitalis-green-bg text-white font-bold py-3 px-8 rounded-full text-lg cta-button">
                             Ir a la Tienda
                         </a>
                     </div>
@@ -405,30 +530,41 @@
         <section id="instalaciones" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Un Entorno Diseñado para la Calma y la Excelencia</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestras instalaciones son una manifestación tangible de nuestro compromiso con el bienestar.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Un Entorno Diseñado para la Calma y la
+                        Excelencia</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestras instalaciones son una manifestación
+                        tangible de nuestro compromiso con el bienestar.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="recepcion">
-                        <img src="https://placehold.co/600x400/d1fae5/166534?text=Recepción+Cálida" alt="Recepción de la clínica" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://placehold.co/600x400/d1fae5/166534?text=Recepción+Cálida"
+                            alt="Recepción de la clínica"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
                             <p class="text-white font-semibold">Recepción cálida y zonas de espera segregadas</p>
                         </div>
                     </div>
-                     <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="consultorios">
-                        <img src="https://placehold.co/600x400/e0f2fe/1e3a8a?text=Consultorios" alt="Consultorio veterinario" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="consultorios">
+                        <img src="https://placehold.co/600x400/e0f2fe/1e3a8a?text=Consultorios"
+                            alt="Consultorio veterinario"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
                             <p class="text-white font-semibold">Consultorios amplios y luminosos</p>
                         </div>
                     </div>
-                     <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="quirofanos">
-                        <img src="https://placehold.co/600x400/dbeafe/1e40af?text=Quirófanos" alt="Quirófano tecnológico" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="quirofanos">
+                        <img src="https://placehold.co/600x400/dbeafe/1e40af?text=Quirófanos"
+                            alt="Quirófano tecnológico"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
                             <p class="text-white font-semibold">Quirófanos con tecnología de punta</p>
                         </div>
                     </div>
-                     <div class="group relative overflow-hidden rounded-xl facility-card" data-facility="hospitalizacion">
-                        <img src="https://placehold.co/600x400/eef2ff/3730a3?text=Hospitalización" alt="Área de hospitalización cómoda" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="group relative overflow-hidden rounded-xl facility-card"
+                        data-facility="hospitalizacion">
+                        <img src="https://placehold.co/600x400/eef2ff/3730a3?text=Hospitalización"
+                            alt="Área de hospitalización cómoda"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
                             <p class="text-white font-semibold">Hospitalización cómoda y separada</p>
                         </div>
@@ -441,8 +577,10 @@
         <section id="compromiso" class="py-20 bg-white">
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Más que una Clínica, un Pilar para la Comunidad</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestro compromiso va más allá de la medicina. Buscamos ser un recurso valioso para la sociedad.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Más que una Clínica, un Pilar para la
+                        Comunidad</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Nuestro compromiso va más allá de la
+                        medicina. Buscamos ser un recurso valioso para la sociedad.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-10">
                     <div class="bg-vitalis-light-green-bg p-8 rounded-2xl shadow-lg text-center">
@@ -450,21 +588,24 @@
                             <i data-lucide="graduation-cap" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Educación para Familias</h3>
-                        <p class="text-gray-600">Talleres, seminarios y contenido de valor para empoderarte en el cuidado de tu mascota.</p>
+                        <p class="text-gray-600">Talleres, seminarios y contenido de valor para empoderarte en el
+                            cuidado de tu mascota.</p>
                     </div>
                     <div class="bg-vitalis-light-green-bg p-8 rounded-2xl shadow-lg text-center">
                         <div class="inline-block p-4 bg-vitalis-green text-white rounded-full mb-4">
                             <i data-lucide="book-marked" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Liderazgo Profesional</h3>
-                        <p class="text-gray-600">Fomentamos la formación continua para estar siempre a la vanguardia de la medicina veterinaria.</p>
+                        <p class="text-gray-600">Fomentamos la formación continua para estar siempre a la vanguardia de
+                            la medicina veterinaria.</p>
                     </div>
                     <div class="bg-vitalis-light-green-bg p-8 rounded-2xl shadow-lg text-center">
                         <div class="inline-block p-4 bg-vitalis-green text-white rounded-full mb-4">
                             <i data-lucide="heart" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Responsabilidad Social</h3>
-                        <p class="text-gray-600">Alianzas con refugios y participación en campañas de esterilización para promover el bienestar animal.</p>
+                        <p class="text-gray-600">Alianzas con refugios y participación en campañas de esterilización
+                            para promover el bienestar animal.</p>
                     </div>
                 </div>
             </div>
@@ -475,62 +616,83 @@
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Familias Felices, Pacientes Sanos</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">La confianza de nuestros clientes es nuestro mayor orgullo. Esto es lo que dicen de nosotros.</p>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">La confianza de nuestros clientes es nuestro
+                        mayor orgullo. Esto es lo que dicen de nosotros.</p>
                 </div>
             </div>
-             <div class="marquee-container">
+            <div class="marquee-container">
                 <div class="marquee py-12">
                     <!-- Testimonial Cards (Set 1) -->
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/facc15/422006?text=Max" alt="Mascota Max" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"El profesionalismo y el cariño con que trataron a Max durante su cirugía fue excepcional. ¡Totalmente recomendados!"</p>
+                        <img src="https://placehold.co/100x100/facc15/422006?text=Max" alt="Mascota Max"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"El profesionalismo y el cariño con que trataron a Max
+                            durante su cirugía fue excepcional. ¡Totalmente recomendados!"</p>
                         <footer class="mt-4 font-bold text-gray-800">- Familia Gómez</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/a3a3a3/171717?text=Luna" alt="Mascota Luna" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Por fin un lugar con todo lo que mi gata Luna necesita. El servicio de urgencias 24/7 nos salvó de un gran susto."</p>
+                        <img src="https://placehold.co/100x100/a3a3a3/171717?text=Luna" alt="Mascota Luna"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Por fin un lugar con todo lo que mi gata Luna necesita. El
+                            servicio de urgencias 24/7 nos salvó de un gran susto."</p>
                         <footer class="mt-4 font-bold text-gray-800">- Ana Restrepo</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/d1d5db/4b5563?text=Rocky" alt="Mascota Rocky" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Las instalaciones son impecables y la tecnología de diagnóstico es impresionante. Encontraron el problema de Rocky de inmediato."</p>
+                        <img src="https://placehold.co/100x100/d1d5db/4b5563?text=Rocky" alt="Mascota Rocky"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Las instalaciones son impecables y la tecnología de
+                            diagnóstico es impresionante. Encontraron el problema de Rocky de inmediato."</p>
                         <footer class="mt-4 font-bold text-gray-800">- Carlos Vélez</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/fca5a5/7f1d1d?text=Kira" alt="Mascota Kira" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"La calidez humana de todo el equipo es lo que nos hace volver. Kira adora venir a sus controles. ¡Gracias Vitalis!"</p>
+                        <img src="https://placehold.co/100x100/fca5a5/7f1d1d?text=Kira" alt="Mascota Kira"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"La calidez humana de todo el equipo es lo que nos hace
+                            volver. Kira adora venir a sus controles. ¡Gracias Vitalis!"</p>
                         <footer class="mt-4 font-bold text-gray-800">- Sofía Jaramillo</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/fdba74/7c2d12?text=Toby" alt="Mascota Toby" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Desde las vacunas de cachorro hasta la fisioterapia, Toby ha recibido la mejor atención en cada etapa. Son nuestra clínica de confianza."</p>
+                        <img src="https://placehold.co/100x100/fdba74/7c2d12?text=Toby" alt="Mascota Toby"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Desde las vacunas de cachorro hasta la fisioterapia, Toby
+                            ha recibido la mejor atención en cada etapa. Son nuestra clínica de confianza."</p>
                         <footer class="mt-4 font-bold text-gray-800">- David Rendón</footer>
                     </div>
 
                     <!-- Testimonial Cards (Duplicated for seamless loop) -->
-                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/facc15/422006?text=Max" alt="Mascota Max" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"El profesionalismo y el cariño con que trataron a Max durante su cirugía fue excepcional. ¡Totalmente recomendados!"</p>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
+                        <img src="https://placehold.co/100x100/facc15/422006?text=Max" alt="Mascota Max"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"El profesionalismo y el cariño con que trataron a Max
+                            durante su cirugía fue excepcional. ¡Totalmente recomendados!"</p>
                         <footer class="mt-4 font-bold text-gray-800">- Familia Gómez</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/a3a3a3/171717?text=Luna" alt="Mascota Luna" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Por fin un lugar con todo lo que mi gata Luna necesita. El servicio de urgencias 24/7 nos salvó de un gran susto."</p>
+                        <img src="https://placehold.co/100x100/a3a3a3/171717?text=Luna" alt="Mascota Luna"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Por fin un lugar con todo lo que mi gata Luna necesita. El
+                            servicio de urgencias 24/7 nos salvó de un gran susto."</p>
                         <footer class="mt-4 font-bold text-gray-800">- Ana Restrepo</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/d1d5db/4b5563?text=Rocky" alt="Mascota Rocky" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Las instalaciones son impecables y la tecnología de diagnóstico es impresionante. Encontraron el problema de Rocky de inmediato."</p>
+                        <img src="https://placehold.co/100x100/d1d5db/4b5563?text=Rocky" alt="Mascota Rocky"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Las instalaciones son impecables y la tecnología de
+                            diagnóstico es impresionante. Encontraron el problema de Rocky de inmediato."</p>
                         <footer class="mt-4 font-bold text-gray-800">- Carlos Vélez</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/fca5a5/7f1d1d?text=Kira" alt="Mascota Kira" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"La calidez humana de todo el equipo es lo que nos hace volver. Kira adora venir a sus controles. ¡Gracias Vitalis!"</p>
+                        <img src="https://placehold.co/100x100/fca5a5/7f1d1d?text=Kira" alt="Mascota Kira"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"La calidez humana de todo el equipo es lo que nos hace
+                            volver. Kira adora venir a sus controles. ¡Gracias Vitalis!"</p>
                         <footer class="mt-4 font-bold text-gray-800">- Sofía Jaramillo</footer>
                     </div>
                     <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 mx-4 text-center">
-                        <img src="https://placehold.co/100x100/fdba74/7c2d12?text=Toby" alt="Mascota Toby" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
-                        <p class="mt-4 text-gray-600 italic">"Desde las vacunas de cachorro hasta la fisioterapia, Toby ha recibido la mejor atención en cada etapa. Son nuestra clínica de confianza."</p>
+                        <img src="https://placehold.co/100x100/fdba74/7c2d12?text=Toby" alt="Mascota Toby"
+                            class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md">
+                        <p class="mt-4 text-gray-600 italic">"Desde las vacunas de cachorro hasta la fisioterapia, Toby
+                            ha recibido la mejor atención en cada etapa. Son nuestra clínica de confianza."</p>
                         <footer class="mt-4 font-bold text-gray-800">- David Rendón</footer>
                     </div>
                 </div>
@@ -542,80 +704,98 @@
             <div class="container mx-auto px-6 fade-in-section">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Estamos aquí para ayudarte. 24/7.</h2>
-                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Contáctanos para agendar una cita o para cualquier emergencia. Tu tranquilidad es nuestra prioridad.</p>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Contáctanos para agendar una cita o para
+                        cualquier emergencia. Tu tranquilidad es nuestra prioridad.</p>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-12 items-start">
                     <!-- Contact Info -->
                     <div class="space-y-6">
-                         <div class="bg-red-50 border-l-4 border-vitalis-accent p-4 rounded-md shadow-sm">
+                        <div class="bg-red-50 border-l-4 border-vitalis-accent p-4 rounded-md shadow-sm">
                             <div class="flex items-start space-x-4">
-                               <i data-lucide="phone-call" class="w-8 h-8 text-vitalis-accent flex-shrink-0 mt-1"></i>
-                               <div>
+                                <i data-lucide="phone-call" class="w-8 h-8 text-vitalis-accent flex-shrink-0 mt-1"></i>
+                                <div>
                                     <h3 class="text-xl font-bold text-gray-800">Urgencias 24/7</h3>
                                     <p class="text-gray-600">Atención inmediata. Llámanos a cualquier hora.</p>
-                                    <a href="tel:+573173709451" class="text-2xl font-bold text-vitalis-accent hover:underline">(+57) 317 370 9451</a>
-                               </div>
+                                    <a href="tel:+573173709451"
+                                        class="text-2xl font-bold text-vitalis-accent hover:underline">(+57) 317 370
+                                        9451</a>
+                                </div>
                             </div>
                         </div>
-                         <div class="bg-blue-50 border-l-4 border-vitalis-blue p-4 rounded-md shadow-sm">
+                        <div class="bg-blue-50 border-l-4 border-vitalis-blue p-4 rounded-md shadow-sm">
                             <div class="flex items-start space-x-4">
                                 <i data-lucide="calendar-plus" class="w-8 h-8 text-vitalis-blue flex-shrink-0 mt-1"></i>
-                               <div>
+                                <div>
                                     <h3 class="text-xl font-bold text-gray-800">Citas y Consultas</h3>
-                                    <p class="text-gray-600">Teléfono: <a href="tel:+576044441299" class="font-semibold text-vitalis-blue hover:underline">(+57) 604 444 1299</a></p>
-                                    <p class="text-gray-600">WhatsApp: <a href="https://wa.me/573186727815" target="_blank" class="font-semibold text-vitalis-blue hover:underline">(+57) 318 672 7815</a></p>
-                               </div>
+                                    <p class="text-gray-600">Teléfono: <a href="tel:+576044441299"
+                                            class="font-semibold text-vitalis-blue hover:underline">(+57) 604 444
+                                            1299</a></p>
+                                    <p class="text-gray-600">WhatsApp: <a href="https://wa.me/573186727815"
+                                            target="_blank"
+                                            class="font-semibold text-vitalis-blue hover:underline">(+57) 318 672
+                                            7815</a></p>
+                                </div>
                             </div>
                         </div>
-                         <div id="open-map-modal-btn" class="bg-gray-100 p-4 rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                        <div id="open-map-modal-btn"
+                            class="bg-gray-100 p-4 rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
                             <div class="flex items-start space-x-4">
                                 <i data-lucide="map-pin" class="w-8 h-8 text-gray-600 flex-shrink-0 mt-1"></i>
-                               <div>
+                                <div>
                                     <h3 class="text-xl font-bold text-gray-800">Dirección</h3>
                                     <p class="text-gray-600">Calle 10A #22-04, El Poblado, Medellín, Colombia</p>
-                                    <p class="text-sm text-vitalis-blue font-semibold mt-1">Ver en el mapa e indicaciones</p>
-                               </div>
+                                    <p class="text-sm text-vitalis-blue font-semibold mt-1">Ver en el mapa e
+                                        indicaciones</p>
+                                </div>
                             </div>
                         </div>
-                         <div class="bg-gray-100 p-4 rounded-md">
+                        <div class="bg-gray-100 p-4 rounded-md">
                             <div class="flex items-start space-x-4">
                                 <i data-lucide="clock" class="w-8 h-8 text-gray-600 flex-shrink-0 mt-1"></i>
-                               <div>
+                                <div>
                                     <h3 class="text-xl font-bold text-gray-800">Horario de Consultas</h3>
                                     <p class="text-gray-600">Lunes a Sábado: 8:00 AM - 7:00 PM</p>
-                               </div>
+                                </div>
                             </div>
                         </div>
                         <div class="pt-4">
-                             <h3 class="text-xl font-bold text-gray-800 mb-4">Síguenos</h3>
-                             <div class="flex space-x-4">
-                                <a href="#" class="text-gray-500 hover:text-vitalis-blue"><i data-lucide="instagram" class="w-8 h-8"></i></a>
-                                <a href="#" class="text-gray-500 hover:text-vitalis-blue"><i data-lucide="facebook" class="w-8 h-8"></i></a>
-                             </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Síguenos</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-500 hover:text-vitalis-blue"><i data-lucide="instagram"
+                                        class="w-8 h-8"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-vitalis-blue"><i data-lucide="facebook"
+                                        class="w-8 h-8"></i></a>
+                            </div>
                         </div>
                     </div>
                     <!-- Contact Form -->
                     <div class="bg-vitalis-light-green-bg p-8 rounded-2xl shadow-lg">
                         <h3 class="text-2xl font-bold text-gray-800 mb-4">Envíanos un mensaje</h3>
-                        <p class="text-gray-600 mb-6">Para consultas no urgentes, déjanos tu mensaje y te responderemos a la brevedad.</p>
+                        <p class="text-gray-600 mb-6">Para consultas no urgentes, déjanos tu mensaje y te responderemos
+                            a la brevedad.</p>
                         <form action="#" method="POST" class="space-y-4">
                             <div>
                                 <label for="name" class="sr-only">Nombre</label>
-                                <input type="text" name="name" id="name" placeholder="Tu Nombre Completo" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
+                                <input type="text" name="name" id="name" placeholder="Tu Nombre Completo"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
                             </div>
-                             <div>
+                            <div>
                                 <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Tu Correo Electrónico" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
+                                <input type="email" name="email" id="email" placeholder="Tu Correo Electrónico"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
                             </div>
-                             <div>
+                            <div>
                                 <label for="phone" class="sr-only">Teléfono</label>
-                                <input type="tel" name="phone" id="phone" placeholder="Tu Número de Teléfono" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
+                                <input type="tel" name="phone" id="phone" placeholder="Tu Número de Teléfono"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green">
                             </div>
-                             <div>
+                            <div>
                                 <label for="message" class="sr-only">Mensaje</label>
-                                <textarea name="message" id="message" rows="4" placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green"></textarea>
+                                <textarea name="message" id="message" rows="4" placeholder="Escribe tu mensaje aquí..."
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-vitalis-green"></textarea>
                             </div>
-                            <button type="submit" class="w-full vitalis-green-bg text-white font-bold py-3 px-6 rounded-full cta-button">
+                            <button type="submit"
+                                class="w-full vitalis-green-bg text-white font-bold py-3 px-6 rounded-full cta-button">
                                 Enviar Mensaje
                             </button>
                         </form>
@@ -631,14 +811,22 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-1 md:col-span-2">
                     <a href="#inicio" class="flex items-center space-x-2 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z"></path><line x1="12" x2="12" y1="2.5" y2="21.5"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 2.5a2.5 2.5 0 0 0-5 0v.1a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5v-.1a2.5 2.5 0 0 0-5 0v18a2.5 2.5 0 0 0 5 0v-.1a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v.1a2.5 2.5 0 0 0 5 0V2.5z">
+                            </path>
+                            <line x1="12" x2="12" y1="2.5" y2="21.5"></line>
+                        </svg>
                         <span class="text-2xl font-bold">Vitalis</span>
                     </a>
                     <p class="text-gray-400">Vitalis Salud Animal S.A.S.</p>
                     <p class="text-gray-400">NIT: 901.XXX.XXX-X</p>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram"
+                                class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="facebook"
+                                class="w-6 h-6"></i></a>
                     </div>
                 </div>
                 <div>
@@ -652,7 +840,7 @@
                         <li><a href="#contacto" class="text-gray-400 hover:text-white">Contacto</a></li>
                     </ul>
                 </div>
-                 <div>
+                <div>
                     <h4 class="font-bold text-lg mb-4">Contacto Rápido</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li>Urgencias: <a href="tel:+573173709451" class="hover:text-white">(+57) 317 370 9451</a></li>
@@ -666,42 +854,52 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- Modals -->
-    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative transform transition-all duration-300 scale-95 opacity-0" id="contact-modal-content">
+    <div id="contact-modal"
+        class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative transform transition-all duration-300 scale-95 opacity-0"
+            id="contact-modal-content">
             <button id="close-contact-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="text-center">
-                 <div class="inline-block p-4 vitalis-blue-bg text-white rounded-full mb-4">
+                <div class="inline-block p-4 vitalis-blue-bg text-white rounded-full mb-4">
                     <i data-lucide="phone" class="w-8 h-8"></i>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Agenda tu Cita</h2>
-                <p class="text-gray-600 mb-6">Estamos listos para atenderte. Elige la opción que mejor se adapte a tu necesidad.</p>
+                <p class="text-gray-600 mb-6">Estamos listos para atenderte. Elige la opción que mejor se adapte a tu
+                    necesidad.</p>
                 <div class="space-y-4">
-                    <a href="tel:+573173709451" class="block w-full text-center vitalis-accent-bg text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
+                    <a href="tel:+573173709451"
+                        class="block w-full text-center vitalis-accent-bg text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
                         <i data-lucide="phone-call" class="inline-block mr-2 -mt-1"></i> Llamar a Urgencias 24/7
                     </a>
-                     <a href="https://wa.me/573186727815" target="_blank" class="block w-full text-center bg-green-500 text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
+                    <a href="https://wa.me/573186727815" target="_blank"
+                        class="block w-full text-center bg-green-500 text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
                         <i data-lucide="message-circle" class="inline-block mr-2 -mt-1"></i> Agendar por WhatsApp
                     </a>
-                    <a href="tel:+576044441299" class="block w-full text-center vitalis-blue-bg text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
+                    <a href="tel:+576044441299"
+                        class="block w-full text-center vitalis-blue-bg text-white font-bold py-4 px-6 rounded-full text-lg cta-button">
                         <i data-lucide="calendar-plus" class="inline-block mr-2 -mt-1"></i> Llamar para Citas
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div id="service-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden" id="service-modal-content">
-             <button id="close-service-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
+
+    <div id="service-modal"
+        class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden"
+            id="service-modal-content">
+            <button id="close-service-modal-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="grid md:grid-cols-2 max-h-[90vh]">
                 <div class="relative">
-                     <img id="service-modal-image" src="https://placehold.co/800x600/a3e6b4/ffffff?text=Servicio" alt="Imagen del servicio" class="w-full h-full object-cover">
+                    <img id="service-modal-image" src="https://placehold.co/800x600/a3e6b4/ffffff?text=Servicio"
+                        alt="Imagen del servicio" class="w-full h-full object-cover">
                 </div>
                 <div class="p-8 overflow-y-auto">
                     <h2 id="service-modal-title" class="text-3xl font-bold text-gray-800 mb-4">Título del Servicio</h2>
@@ -712,14 +910,18 @@
     </div>
 
     <div id="map-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden max-h-[90vh]" id="map-modal-content">
-            <button id="close-map-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden max-h-[90vh]"
+            id="map-modal-content">
+            <button id="close-map-modal-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="grid md:grid-cols-2 h-full">
                 <div class="p-8 overflow-y-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Cómo Llegar a Vitalis</h2>
-                    <p class="text-gray-600 mb-6">Nos encontramos en una ubicación privilegiada en El Poblado, de fácil acceso desde las principales vías de la ciudad. Queremos que tu visita sea lo más cómoda posible.</p>
+                    <p class="text-gray-600 mb-6">Nos encontramos en una ubicación privilegiada en El Poblado, de fácil
+                        acceso desde las principales vías de la ciudad. Queremos que tu visita sea lo más cómoda
+                        posible.</p>
                     <div class="space-y-6">
                         <div>
                             <h3 class="flex items-center text-xl font-semibold text-gray-800 mb-2">
@@ -737,32 +939,42 @@
                                 <i data-lucide="parking-circle" class="w-6 h-6 mr-2 text-vitalis-green"></i>
                                 Parqueadero
                             </h3>
-                            <p class="text-gray-600">Contamos con parqueaderos vigilados para clientes en el sótano del edificio. Adicionalmente, hay varias zonas de parqueo público en los alrededores.</p>
+                            <p class="text-gray-600">Contamos con parqueaderos vigilados para clientes en el sótano del
+                                edificio. Adicionalmente, hay varias zonas de parqueo público en los alrededores.</p>
                         </div>
                         <div>
                             <h3 class="flex items-center text-xl font-semibold text-gray-800 mb-2">
                                 <i data-lucide="bus" class="w-6 h-6 mr-2 text-vitalis-green"></i>
                                 Transporte Público
                             </h3>
-                            <p class="text-gray-600">Las rutas de buses de El Poblado y la estación de metro "Poblado" se encuentran a pocos minutos, facilitando el acceso a través del sistema de transporte de la ciudad.</p>
+                            <p class="text-gray-600">Las rutas de buses de El Poblado y la estación de metro "Poblado"
+                                se encuentran a pocos minutos, facilitando el acceso a través del sistema de transporte
+                                de la ciudad.</p>
                         </div>
                     </div>
                 </div>
                 <div class="h-64 md:h-full">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.339288129598!2d-75.57187188568958!3d6.219035128362677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428214820842b%3A0x633a698a5367a683!2sCl.%2010a%20%2322-4%2C%20Medell%C3%ADn%2C%20El%20Poblado%2C%20Medell%C3%ADn%2C%20Antioquia%2C%20Colombia!5e0!3m2!1sen!2sus!4v1693367888698!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.339288129598!2d-75.57187188568958!3d6.219035128362677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428214820842b%3A0x633a698a5367a683!2sCl.%2010a%20%2322-4%2C%20Medell%C3%ADn%2C%20El%20Poblado%2C%20Medell%C3%ADn%2C%20Antioquia%2C%20Colombia!5e0!3m2!1sen!2sus!4v1693367888698!5m2!1sen!2sus"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="facility-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden max-h-[90vh]" id="facility-modal-content">
-             <button id="close-facility-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
+    <div id="facility-modal"
+        class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl relative transform transition-all duration-300 scale-95 opacity-0 overflow-hidden max-h-[90vh]"
+            id="facility-modal-content">
+            <button id="close-facility-modal-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 bg-white/50 rounded-full p-1 z-20">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="grid md:grid-cols-2 h-full">
                 <div class="p-8 overflow-y-auto">
-                    <h2 id="facility-modal-title" class="text-3xl font-bold text-gray-800 mb-4">Título de la Instalación</h2>
+                    <h2 id="facility-modal-title" class="text-3xl font-bold text-gray-800 mb-4">Título de la Instalación
+                    </h2>
                     <div id="facility-modal-description" class="text-gray-600 space-y-4"></div>
                 </div>
                 <div id="facility-modal-slideshow" class="relative h-64 md:h-full bg-gray-200">
@@ -776,7 +988,7 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
-        
+
         // Data for Modals
         const serviceData = {
             preventiva: {
@@ -804,7 +1016,7 @@
                     </ul>
                 `
             },
-             especialidades: {
+            especialidades: {
                 title: "Especialidades Médicas",
                 image: "https://placehold.co/800x600/e0f2fe/1e3a8a?text=Especialistas",
                 description: `
@@ -946,7 +1158,7 @@
             if (modal) modal.addEventListener('click', (e) => {
                 if (e.target === modal) closeModal();
             });
-            
+
             return { openModal, closeModal };
         };
 
@@ -965,7 +1177,7 @@
             window.addEventListener('scroll', () => {
                 header.classList.toggle('shadow-lg', window.scrollY > 10);
             });
-            
+
             // Scroll Animations
             const sections = document.querySelectorAll('.fade-in-section');
             const observer = new IntersectionObserver((entries) => {
@@ -977,11 +1189,11 @@
                 });
             }, { threshold: 0.15 });
             sections.forEach(section => observer.observe(section));
-            
+
             // Modals Setup
             setupModal('contact-modal', ['open-modal-btn', 'open-modal-btn-mobile', 'open-modal-btn-hero'], 'close-contact-modal-btn');
             setupModal('map-modal', ['open-map-modal-btn'], 'close-map-modal-btn');
-            
+
             // Service Modal Specific Logic
             const { openModal: openServiceModal, closeModal: closeServiceModal } = setupModal('service-modal', [], 'close-service-modal-btn');
             document.querySelectorAll('.service-card').forEach(card => {
@@ -1000,20 +1212,20 @@
             let facilitySlideshowInterval;
             const { openModal: openFacilityModal, closeModal: baseCloseFacilityModal } = setupModal('facility-modal', [], 'close-facility-modal-btn');
             const slideshowContainer = document.getElementById('facility-modal-slideshow');
-            
+
             const closeFacilityModal = () => {
                 clearInterval(facilitySlideshowInterval);
                 baseCloseFacilityModal();
-                 setTimeout(() => slideshowContainer.innerHTML = '', 300);
+                setTimeout(() => slideshowContainer.innerHTML = '', 300);
             }
-            
+
             document.querySelectorAll('.facility-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const data = facilityData[card.dataset.facility];
                     if (data) {
                         document.getElementById('facility-modal-title').innerText = data.title;
                         document.getElementById('facility-modal-description').innerHTML = data.description;
-                        
+
                         slideshowContainer.innerHTML = '';
                         data.images.forEach((imgUrl, index) => {
                             const slide = document.createElement('div');
@@ -1036,12 +1248,16 @@
                     }
                 });
             });
-             document.getElementById('close-facility-modal-btn').addEventListener('click', closeFacilityModal);
-             document.getElementById('facility-modal').addEventListener('click', (e) => {
-                if(e.target.id === 'facility-modal') closeFacilityModal();
-             });
+            document.getElementById('close-facility-modal-btn').addEventListener('click', closeFacilityModal);
+            document.getElementById('facility-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'facility-modal') closeFacilityModal();
+            });
         });
     </script>
-</body>
-</html>
 
+
+    
+
+</body>
+
+</html>
