@@ -398,7 +398,7 @@ Please change the parent <Route path="${D}"> to <Route path="${D==="/"?"*":`${D}
                 <li><strong>Zonas Segregadas:</strong> Contamos con salas de espera separadas física y visualmente para caninos y felinos. Esto reduce drásticamente el estrés y la ansiedad de las mascotas, permitiendo una visita mucho más tranquila para todos.</li>
                 <li><strong>Comodidad para Familias:</strong> Ofrecemos Wi-Fi, una estación de bebidas y asientos ergonómicos para asegurar que tu espera sea lo más cómoda posible.</li>
             </ul>
-        `,images:["./public/images/servicios/Recepcion_1.png","./public/images/servicios/Recepcion_2.png","./public/images/servicios/Recepcion_3.png"]},consultorios:{title:"Consultorios Amplios y Luminosos",description:`
+        `,images:["/public/images/servicios/Recepcion_1.png","/public/images/servicios/Recepcion_2.png","/public/images/servicios/Recepcion_3.png"]},consultorios:{title:"Consultorios Amplios y Luminosos",description:`
             <p class="mb-4">Nuestros consultorios son espacios diseñados para facilitar una interacción cómoda y fluida entre el veterinario, la familia y el paciente. La funcionalidad y la calma son nuestras prioridades.</p>
             <ul class="list-disc pl-6 space-y-2">
                 <li><strong>Espacio Generoso:</strong> Los consultorios son amplios para permitir que las mascotas, especialmente las de gran tamaño, se sientan cómodas y no agobiadas.</li>
