@@ -369,7 +369,7 @@ Please change the parent <Route path="${D}"> to <Route path="${D==="/"?"*":`${D}
                 <li><strong>Oncología:</strong> Terapia y cuidado compasivo para pacientes con cáncer.</li>
                 <li><strong>Medicina Felina:</strong> Enfoque especializado en la salud y comportamiento de los gatos.</li>
             </ul>
-        `},quirurgicos:{title:"Servicios Quirúrgicos de Vanguardia",image:"./public/images/Servicios/Servicios_Quirurgicos.png",description:`
+        `},quirurgicos:{title:"Servicios Quirúrgicos de Vanguardia",image:"/Vitalis_VET/images/Servicios/Servicios_Quirurgicos.png",description:`
             <p class="mb-4">Nuestros quirófanos están equipados con la más avanzada tecnología de monitoreo y anestesia para garantizar la máxima seguridad del paciente en cada procedimiento, desde los más rutinarios hasta los más complejos.</p>
             <ul class="list-disc pl-6 space-y-2">
                 <li><strong>Cirugía de Tejidos Blandos:</strong> Procedimientos abdominales, torácicos y reconstructivos.</li>
