@@ -373,7 +373,7 @@ export default function Home() {
                         {[
                             { id: 'recepcion', title: "Recepción cálida", img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=600" },
                             { id: 'consultorios', title: "Consultorios amplios", img: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=600" },
-                            { id: 'quirofanos', title: "Quirófanos modernos", img: "https://images.unsplash.com/photo-1584820927498-cafe2c1c969f?auto=format&fit=crop&q=80&w=600" },
+                            { id: 'quirofanos', title: "Quirófanos modernos", img: "./public/images/Servicios/quirofano_moderno.png" },
                             { id: 'hospitalizacion', title: "Hospitalización separada", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" }
                         ].map((facility, i) => (
                             <motion.div 

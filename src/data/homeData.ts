@@ -26,7 +26,7 @@ export const serviceData = {
     },
     especialidades: {
         title: "Especialidades Médicas",
-        image: "https://images.unsplash.com/photo-1596856285880-1a66e409b30c?auto=format&fit=crop&q=80&w=800",
+        image: "./public/images/Servicios/especialidades_VET.png",
         description: `
             <p class="mb-4">Para los casos más complejos, nuestro equipo de especialistas ofrece un nivel superior de conocimiento y experiencia. Abordamos cada caso de forma multidisciplinar para garantizar el mejor resultado posible.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -40,7 +40,7 @@ export const serviceData = {
     },
     quirurgicos: {
         title: "Servicios Quirúrgicos de Vanguardia",
-        image: "https://images.unsplash.com/photo-1584820927498-cafe2c1c969f?auto=format&fit=crop&q=80&w=800",
+        image: "./public/images/Servicios/Servicios_Quirurgicos.png",
         description: `
             <p class="mb-4">Nuestros quirófanos están equipados con la más avanzada tecnología de monitoreo y anestesia para garantizar la máxima seguridad del paciente en cada procedimiento, desde los más rutinarios hasta los más complejos.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -53,7 +53,7 @@ export const serviceData = {
     },
     urgencias: {
         title: "Urgencias y Hospitalización 24/7",
-        image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800",
+        image: "./public/images/Servicios/Vet_Emergencias.png",
         description: `
             <p class="mb-4">En los momentos críticos, cada segundo cuenta. Nuestro equipo de urgencias está presente físicamente las 24 horas del día, los 365 días del año, listos para actuar con rapidez y eficacia.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -89,9 +89,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800'
+            './public/images/servicios/Recepcion_1.png',
+            './public/images/servicios/Recepcion_2.png',
+            './public/images/servicios/Recepcion_3.png'
         ]
     },
     consultorios: {
@@ -105,9 +105,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            'https://images.unsplash.com/photo-1584820927498-cafe2c1c969f?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1596856285880-1a66e409b30c?auto=format&fit=crop&q=80&w=800'
+            './public/images/servicios/consultorio_1.png',
+            './public/images/servicios/consultorio_2.png',
+            './public/images/servicios/consultorio_3.png'
         ]
     },
     quirofanos: {
