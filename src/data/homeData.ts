@@ -26,7 +26,7 @@ export const serviceData = {
     },
     especialidades: {
         title: "Especialidades Médicas",
-        image: "./public/images/Servicios/especialidades_VET.png",
+        image: `${import.meta.env.BASE_URL}images/Servicios/Especialidades_Vet.png`,
         description: `
             <p class="mb-4">Para los casos más complejos, nuestro equipo de especialistas ofrece un nivel superior de conocimiento y experiencia. Abordamos cada caso de forma multidisciplinar para garantizar el mejor resultado posible.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -40,7 +40,7 @@ export const serviceData = {
     },
     quirurgicos: {
         title: "Servicios Quirúrgicos de Vanguardia",
-        image: "./public/images/Servicios/Servicios_Quirurgicos.png",
+        image: `${import.meta.env.BASE_URL}images/Servicios/Servicios_Quirurgicos.png`,
         description: `
             <p class="mb-4">Nuestros quirófanos están equipados con la más avanzada tecnología de monitoreo y anestesia para garantizar la máxima seguridad del paciente en cada procedimiento, desde los más rutinarios hasta los más complejos.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -89,9 +89,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            './public/images/servicios/Recepcion_1.png',
-            './public/images/servicios/Recepcion_2.png',
-            './public/images/servicios/Recepcion_3.png'
+            '/public/images/servicios/Recepcion_1.png',
+            '/public/images/servicios/Recepcion_2.png',
+            '/public/images/servicios/Recepcion_3.png'
         ]
     },
     consultorios: {
