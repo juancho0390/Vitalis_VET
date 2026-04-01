@@ -360,7 +360,7 @@ Please change the parent <Route path="${D}"> to <Route path="${D==="/"?"*":`${D}
                 <li><strong>Imagenología Digital:</strong> Radiología de alta definición y ecografía Doppler para una evaluación detallada de órganos internos.</li>
                 <li><strong>Endoscopia y Laparoscopia:</strong> Técnicas mínimamente invasivas para explorar y tratar afecciones gastrointestinales y respiratorias.</li>
             </ul>
-        `},especialidades:{title:"Especialidades Médicas",image:"/Vitalis_VET/images/Servicios/Especialidades_VET.png",description:`
+        `},especialidades:{title:"Especialidades Médicas",image:"/Vitalis_VET/images/Servicios/Especialidades_Vet.png",description:`
             <p class="mb-4">Para los casos más complejos, nuestro equipo de especialistas ofrece un nivel superior de conocimiento y experiencia. Abordamos cada caso de forma multidisciplinar para garantizar el mejor resultado posible.</p>
             <ul class="list-disc pl-6 space-y-2">
                 <li><strong>Cardiología:</strong> Diagnóstico y tratamiento de enfermedades cardíacas.</li>
