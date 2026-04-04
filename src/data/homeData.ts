@@ -53,7 +53,7 @@ export const serviceData = {
     },
     urgencias: {
         title: "Urgencias y Hospitalización 24/7",
-        image: "./public/images/Servicios/Vet_Emergencias.png",
+        image: `${import.meta.env.BASE_URL}images/Servicios/Vet_Emergencias.png`,
         description: `
             <p class="mb-4">En los momentos críticos, cada segundo cuenta. Nuestro equipo de urgencias está presente físicamente las 24 horas del día, los 365 días del año, listos para actuar con rapidez y eficacia.</p>
             <ul class="list-disc pl-6 space-y-2">
@@ -89,9 +89,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            '/public/images/servicios/Recepcion_1.png',
-            '/public/images/servicios/Recepcion_2.png',
-            '/public/images/servicios/Recepcion_3.png'
+            `${import.meta.env.BASE_URL}images/Servicios/Recepcion_1.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/Recepcion_2.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/Recepcion_3.png`
         ]
     },
     consultorios: {
@@ -105,9 +105,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            './public/images/servicios/consultorio_1.png',
-            './public/images/servicios/consultorio_2.png',
-            './public/images/servicios/consultorio_3.png'
+            `${import.meta.env.BASE_URL}images/Servicios/consultorio_1.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/consultorio_2.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/consultorio_3.png`
         ]
     },
     quirofanos: {
@@ -121,9 +121,9 @@ export const facilityData = {
             </ul>
         `,
         images: [
-            'https://images.unsplash.com/photo-1584820927498-cafe2c1c969f?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1596856285880-1a66e409b30c?auto=format&fit=crop&q=80&w=800'
+            `${import.meta.env.BASE_URL}images/Servicios/quirofano_1.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/quirofano_2.png`,
+            `${import.meta.env.BASE_URL}images/Servicios/quirofano_3.png`
         ]
     },
     hospitalizacion: {
