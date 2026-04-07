@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useCart } from '../context/CartContext';
 
 import Papa from 'papaparse';
+import { supabase } from '../lib/supabaseClient';
 
 interface StoreProduct {
     IDProducto: string;
@@ -33,22 +34,23 @@ export default function Store() {
     const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
     const filteredProducts = products.filter(p => {
-        const matchesSearch = (p.nombre || '').toLowerCase().includes(searchTerm.toLowerCase());
-        
-        // Split by comma as requested
-        const productCategories = (p.Categoria || '')
-            .split(',')
-            .map(c => c.trim())
-            .filter(Boolean);
+    // Normalizamos la búsqueda para que no importen tildes ni mayúsculas
+    const matchesSearch = normalize(p.nombre || '').includes(normalize(searchTerm));
+    
+    const productCategories = (p.Categoria || '')
+        .split(',')
+        .map(c => c.trim())
+        .filter(Boolean);
 
-        const matchesCategory = selectedCategories.length === 0 || 
-            selectedCategories.some(cat => {
-                const normalizedCat = normalize(cat);
-                return productCategories.some(pCat => normalize(pCat) === normalizedCat);
-            });
-            
-        return matchesSearch && matchesCategory;
-    });
+    const matchesCategory = selectedCategories.length === 0 || 
+        selectedCategories.some(cat => {
+            const normalizedCat = normalize(cat);
+            // Comparamos normalizado contra normalizado
+            return productCategories.some(pCat => normalize(pCat) === normalizedCat);
+        });
+        
+    return matchesSearch && matchesCategory;
+});
 
     const visibleProducts = filteredProducts.slice(0, visibleCount);
 
@@ -78,123 +80,57 @@ export default function Store() {
     }, [searchTerm, selectedCategories]);
 
     useEffect(() => {
-        const spreadsheetId = '1pW4eJT7dKFdi0Xyu8CrBc9_saoAav58dau0xd0F4NNw';
-        
-        const fetchSheetData = async (sheetName: string) => {
-            const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`Failed to fetch sheet: ${sheetName}`);
-            const csvText = await response.text();
-            
-            return new Promise<any[]>((resolve, reject) => {
-                Papa.parse(csvText, {
-                    header: false,
-                    skipEmptyLines: true,
-                    complete: (results) => {
-                        const cleanedData = results.data.map((row: any) => {
-                            if (Array.isArray(row)) {
-                                return row.map(cell => typeof cell === 'string' ? cell.replace(/^"+|"+$/g, '').trim() : cell);
-                            }
-                            return row;
-                        });
-                        resolve(cleanedData);
-                    },
-                    error: (error) => reject(error)
-                });
-            });
-        };
+    const fetchData = async () => {
+        try {
+            setIsLoading(true);
+            setError(null);
 
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                
-                const [pRows, cRows] = await Promise.all([
-                    fetchSheetData('BDD Ppal'),
-                    fetchSheetData('Criterios')
-                ]);
+            // IMPORTANTE: Verifique si en Supabase es 'Criterios' o 'criterios'
+            const [productsRes, categoriesRes] = await Promise.all([
+                supabase.from('Vitalis_BDD').select('*'),
+                supabase.from('Criterios').select('nombre') 
+            ]);
 
-                // Process Categories (Criterios)
-                if (cRows && cRows.length > 0) {
-                    const cats = cRows
-                        .map((row: any) => row[0])
-                        .filter((c: any) => {
-                            if (!c) return false;
-                            const normalized = c.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                            // Ignore common header names
-                            return !['categoria', 'categorias', 'criterio', 'criterios', 'lista', 'nombre'].includes(normalized);
-                        });
-                    const uniqueCats = Array.from(new Set(cats)).sort((a: any, b: any) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
-                    setAvailableCategories(uniqueCats as string[]);
-                }
+            if (productsRes.error) throw productsRes.error;
+            if (categoriesRes.error) throw categoriesRes.error;
 
-                // Process Products
-                if (pRows && pRows.length >= 2) {
-                    // Identify headers from the first row
-                    const rawHeaders = pRows[0].map((h: any) => h || '');
-                    const headers = rawHeaders.map((h: any) => h.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-                    
-                    const findIdx = (names: string[]) => {
-                        return headers.findIndex((h: any) => names.some(name => h === name || h.includes(name)));
-                    };
-                    
-                    const idIdx = findIdx(['idproducto', 'id', 'codigo']);
-                    const nameIdx = findIdx(['nombre', 'producto', 'item']);
-                    const priceIdx = findIdx(['precio', 'valor', 'costo']);
-                    const descIdx = findIdx(['descripcion', 'detalle']);
-                    const img1Idx = findIdx(['imagen1', 'foto1']);
-                    const img2Idx = findIdx(['imagen2', 'foto2']);
-                    const img3Idx = findIdx(['imagen3', 'foto3']);
-                    const img4Idx = findIdx(['imagen4', 'foto4']);
-                    
-                    // Advanced Category Detection:
-                    // 1. Try to find by header name
-                    let catIdx = findIdx(['categoria', 'categorias', 'clase', 'tipo']);
-                    
-                    // 2. If not found or if we want to be sure, check Column I (index 8)
-                    if (catIdx === -1 || catIdx !== 8) {
-                        const sampleRows = pRows.slice(1, 6);
-                        const hasDataInColI = sampleRows.some((r: any) => r[8] && r[8].trim().length > 0);
-                        if (hasDataInColI) {
-                            catIdx = 8;
-                        }
-                    }
-
-                    const formattedData = pRows.slice(1).map((row: any) => {
-                        const cleanRow = row.map((cell: any) => cell || '');
-                        
-                        let rawCategory = '';
-                        if (catIdx !== -1 && catIdx < cleanRow.length) {
-                            rawCategory = cleanRow[catIdx];
-                        } else if (cleanRow.length > 8) {
-                            // Absolute fallback to Column I
-                            rawCategory = cleanRow[8];
-                        }
-                        
-                        return {
-                            IDProducto: idIdx !== -1 ? cleanRow[idIdx] : (cleanRow[0] || ''),
-                            nombre: nameIdx !== -1 ? cleanRow[nameIdx] : (cleanRow[1] || ''),
-                            Precio: parseFloat(priceIdx !== -1 ? cleanRow[priceIdx] : cleanRow[2]) || 0,
-                            descripcion: descIdx !== -1 ? cleanRow[descIdx] : (cleanRow[3] || ''),
-                            imagen1: img1Idx !== -1 ? cleanRow[img1Idx] : (cleanRow[4] || ''),
-                            imagen2: img2Idx !== -1 ? cleanRow[img2Idx] : (cleanRow[5] || ''),
-                            imagen3: img3Idx !== -1 ? cleanRow[img3Idx] : (cleanRow[6] || ''),
-                            imagen4: img4Idx !== -1 ? cleanRow[img4Idx] : (cleanRow[7] || ''),
-                            Categoria: rawCategory || 'Sin Categoría'
-                        };
-                    });
-
-                    setProducts(formattedData);
-                }
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Error loading data:', error);
-                setError('Error al cargar el catálogo. Por favor intenta más tarde.');
-                setIsLoading(false);
+            if (categoriesRes.data) {
+                const uniqueCats = categoriesRes.data
+                    .map(c => c.nombre)
+                    .filter(Boolean)
+                    .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+                setAvailableCategories(uniqueCats);
             }
-        };
 
-        fetchData();
-    }, []);
+            if (productsRes.data) {
+    const formattedData = productsRes.data.map(item => {
+        // Chismoseamos cuál de todos estos nombres trae el valor
+        const precioReal = item.Precio ?? item.precio ?? item.PRECIO ?? 0;
+        
+        return {
+            IDProducto: String(item.id_producto || item.id || item.IDProducto || '0'),
+            nombre: item.nombre || item.Nombre || 'Producto sin nombre',
+            // Convertimos a número por si llega como texto o BigInt
+            Precio: Number(precioReal), 
+            descripcion: item.descripcion || item.Descripcion || '',
+            imagen1: item.imagen1 || item.Imagen1 || '',
+            imagen2: item.imagen2,
+            imagen3: item.imagen3,
+            imagen4: item.imagen4,
+            Categoria: item.categoria || item.Categoria || 'Sin Categoría'
+        };
+    });
+    setProducts(formattedData);
+}
+        } catch (error: any) {
+            console.error('Error loading Supabase data:', error);
+            setError(`Error: ${error.message || 'No se pudo conectar con la base de datos'}`);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    fetchData();
+}, []);
 
     const toggleCategory = (category: string) => {
         setSelectedCategories(prev => 
